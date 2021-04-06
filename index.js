@@ -1,12 +1,16 @@
 const express = require("express");
 const connectDB = require("./config/db");
+const bodyParser = require("body-parser");
 const cors = require("cors");
 const app = express();
 
 //connection to database
 connectDB();
+//body-parser
+app.use(bodyParser.json());
 //cors
 app.use(cors());
+
 //allowing to pass json data
 app.use(express.json({ extented: false }));
 
