@@ -44,10 +44,10 @@ router.post("/shorten", async (req, res) => {
       }
     } catch (err) {
       console.error(err);
-      res.status(500).json("Server error");
+      return res.status(500).json({ error: "Server error" });
     }
   } else {
-    res.status(401).json({ Error: "Invalid original url" });
+    return res.status(401).json({ error: "Invalid original url" });
   }
 });
 
