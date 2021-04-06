@@ -47,7 +47,6 @@ router.post("/shorten", async (req, res) => {
 
         await url.save();
         res.json(url);
-        return res.status(200).json({ success: "Url posted succesfully" });
       }
     } catch (err) {
       console.error(err);
