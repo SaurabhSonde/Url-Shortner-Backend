@@ -14,12 +14,18 @@ router.post("/shorten", async (req, res) => {
   const baseUrl = process.env.BASE_URL;
 
   if (!validUrl.isUri(baseUrl)) {
-    return res.status(401).json("Invalid base url");
+    return res.status(401).json({ error: "Invalid base url" });
   }
 
   // Create url code
 
   const urlCode = shortid.generate();
+
+  // checking if input field is empty or not
+
+  if (!originalUrl) {
+    return res.status(400).json({ error: "Please enter your link!" });
+  }
 
   // check original url
 
@@ -41,6 +47,7 @@ router.post("/shorten", async (req, res) => {
 
         await url.save();
         res.json(url);
+        return res.status(200).json({ success: "Url posted succesfully" });
       }
     } catch (err) {
       console.error(err);
