@@ -46,7 +46,7 @@ router.post("/shorten", async (req, res) => {
         });
 
         await url.save();
-        res.json(url);
+        return res.json(url);
       }
     } catch (err) {
       console.error(err);
