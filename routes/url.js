@@ -34,7 +34,7 @@ router.post("/shorten", async (req, res) => {
       let url = await Url.findOne({ originalUrl });
 
       if (url) {
-        res.json(url);
+        return res.json(url.shortUrl);
       } else {
         const shortUrl = baseUrl + "/" + urlCode;
 
@@ -46,7 +46,7 @@ router.post("/shorten", async (req, res) => {
         });
 
         await url.save();
-        return res.json(url);
+        return res.json(url.shortUrl);
       }
     } catch (err) {
       console.error(err);
