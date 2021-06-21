@@ -1,5 +1,5 @@
 {
-  "name": "url-shortner",
+  "name": "url-shortner-backend",
   "version": "1.0.0",
   "description": "Url shortner api with nodejs.",
   "main": "index.js",
